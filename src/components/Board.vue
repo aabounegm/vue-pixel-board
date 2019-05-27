@@ -107,9 +107,12 @@ export default Vue.extend({
 			}
 			const rightClickXorClearing = this.clear !== (e.type === 'contextmenu');
 			info.color = rightClickXorClearing ? '' : this.color;
-			this.$set(this.data[info.row], info.col, info.color);
-			this.$emit('input', this.data);
-			this.$emit('update:pixel', info);
+			const oldColor = this.getColor(info.row, info.col);
+			if(info.color !== oldColor) {
+				this.$set(this.data[info.row], info.col, info.color);
+				this.$emit('input', this.data);
+				this.$emit('update:pixel', info);
+			}
 		},
 		getColor(row: number, col: number) {
 			if(!Array.isArray(this.data[row])) {
