@@ -3,8 +3,9 @@
 		style="height:100%; width:100%;"
 		:style="{'background-color': color}"
 		draggable="true"
-		@dragstart.prevent="trigger($event); dragging=true"
+		@dragstart.prevent="trigger"
 		@click.prevent="trigger"
+		@contextmenu.prevent="trigger"
 	>
 	</div>
 </template>
@@ -17,17 +18,8 @@ export default Vue.extend({
 		col: Number,
 		color: String,
 	},
-	data() {
-		return {
-			dragging: false,
-		};
-	},
 	methods: {
 		trigger(e: MouseEvent) {
-			if(this.dragging) {
-				this.dragging = false;
-				return;
-			}
 			this.$emit('click', e, {
 				row: this.row,
 				col: this.col,

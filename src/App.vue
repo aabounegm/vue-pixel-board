@@ -5,12 +5,14 @@
 			:cols="20"
 			v-model="arr"
 			:color="color"
+			:clear="deleting"
 		>
 			<!-- <template v-slot="props">
 				{{props.data}}
 			</template> -->
 		</board>
 		<input type="color" v-model="color"/>
+		<input type="checkbox" v-model="deleting"/>
 	</div>
 </template>
 
@@ -22,6 +24,7 @@ export default Vue.extend({
 		return {
 			arr: [],
 			color: '#000000',
+			deleting: false,
 		};
 	},
 	methods: {

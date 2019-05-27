@@ -68,14 +68,14 @@ export default Vue.extend({
 		},
 		color: {
 			type: String,
-			default: 'black',
+			default: '#000000',
 		},
+		clear: Boolean,
 	} as {[propName: string]: PropOptions},
 	data() {
 		return {
-			data: [[]] as any[][],
+			data: [[]] as string[][],
 			dragging: false,
-			dragInitialColor: null,
 		};
 	},
 	computed: {
@@ -91,37 +91,31 @@ export default Vue.extend({
 		},
 		dragEnd(e: MouseEvent) {
 			this.dragging = false;
-			this.dragInitialColor = null;
 		},
 		mouseEnterPixel(e: MouseEvent, i: number, j: number) {
 			if(!this.dragging) {
 				return;
 			}
-			if(this.dragInitialColor === '') {
-				if(!this.data[i] || !this.data[i][j]) {
-					return;
-				}
-			} else if(this.data[i] && this.data[i][j] === this.dragInitialColor) {
-				return;
-			}
-			if(e.target) {
-				(e.target as HTMLDivElement).click();
-			}
+			this.clicked(e, {row: i, col: j, color: this.getColor(i, j)});
 		},
-		clicked(_: MouseEvent, e: {row: number, col: number, color: string}) {
+		clicked(e: MouseEvent, info: {row: number, col: number, color: string}) {
 			if(!Array.isArray(this.data)) {
 				this.data = [];
 			}
-			if(!Array.isArray(this.data[e.row])) {
-				this.$set(this.data, e.row, []);
+			if(!Array.isArray(this.data[info.row])) {
+				this.$set(this.data, info.row, []);
 			}
-			e.color = e.color === this.color ? '' : this.color;
-			this.$set(this.data[e.row], e.col, e.color);
+			const rightClickXorClearing = this.clear !== (e.type === 'contextmenu');
+			info.color = rightClickXorClearing ? '' : this.color;
+			this.$set(this.data[info.row], info.col, info.color);
 			this.$emit('input', this.data);
-			this.$emit('update:pixel', e);
-			if(this.dragging && this.dragInitialColor == null) {
-				this.dragInitialColor = this.data[e.row][e.col];
+			this.$emit('update:pixel', info);
+		},
+		getColor(row: number, col: number) {
+			if(!Array.isArray(this.data[row])) {
+				return '';
 			}
+			return this.data[row][col] || '';
 		},
 	},
 	mounted() {
