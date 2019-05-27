@@ -13,6 +13,7 @@
 		</board>
 		<input type="color" v-model="color"/>
 		<input type="checkbox" v-model="deleting"/>
+		{{ deleting ? '🗑️' : '✏️' }}
 	</div>
 </template>
 
