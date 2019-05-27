@@ -7,6 +7,8 @@
 		@click.prevent="trigger"
 		@contextmenu.prevent="trigger"
 	>
+		<slot>
+		</slot>
 	</div>
 </template>
 
