@@ -7,9 +7,9 @@
 			:color="color"
 			:clear="deleting"
 		>
-			<!-- <template v-slot="props">
-				{{props.data}}
-			</template> -->
+			<template v-slot="{row, col, color}">
+				{{`(${row}, ${col}) [${color}]`}}
+			</template>
 		</board>
 		<input type="color" v-model="color"/>
 		<input type="checkbox" v-model="deleting"/>

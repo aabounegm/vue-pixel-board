@@ -18,11 +18,11 @@
 				:class="{grid}"
 				:row="i"
 				:col="j"
-				:color="data[i] && data[i][j]"
+				:color="getColor(i, j)"
 				@click="clicked"
 				@mouseenter.native="mouseEnterPixel($event, i, j)"
 			>
-				<slot :row="i" :col="j">
+				<slot v-bind="{row: i, col: j, color: getColor(i,j)}">
 				</slot>
 			</pixel>
 		</div>
