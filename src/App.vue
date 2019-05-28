@@ -7,6 +7,8 @@
 			:color="color"
 			:clear="deleting"
 			:readonly="readonly"
+			:grid="grid"
+			:checkers="checkers"
 			ref="board"
 		>
 			<template v-slot="{row, col, color}">
@@ -18,6 +20,10 @@
 		{{ deleting ? '🗑️' : '✏️' }}&nbsp;&nbsp;
 		<input type="checkbox" v-model="readonly"/>
 		{{ readonly ? '🚫' : '⭕' }}&nbsp;&nbsp;
+		<input type="checkbox" v-model="grid"/>
+		{{ grid ? '╬' : '┼' }}&nbsp;&nbsp;
+		<input type="checkbox" v-model="checkers"/>
+		{{ checkers ? '🏁' : '⬜' }}&nbsp;&nbsp;
 		<button @click="clear">Clear</button>
 	</div>
 </template>
@@ -32,6 +38,8 @@ export default Vue.extend({
 			color: '#000000',
 			deleting: false,
 			readonly: false,
+			grid: true,
+			checkers: false,
 		};
 	},
 	methods: {

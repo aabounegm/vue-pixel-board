@@ -15,7 +15,7 @@
 				v-for="(_, j) in cols"
 				:key="`${i},${j}`"
 				class="pixel"
-				:class="{grid}"
+				:class="{grid, checkers: checkers && i%2 === j%2}"
 				:row="i"
 				:col="j"
 				:color="getColor(i, j)"
@@ -72,6 +72,18 @@ export default Vue.extend({
 		},
 		clear: Boolean,
 		readonly: Boolean,
+		checkers: {
+			type: [Boolean, String],
+			default: false,
+			validator(value: boolean|string) {
+				if(typeof value === 'boolean') {
+					return true;
+				}
+				const dummy = document.createElement('div');
+				dummy.style.backgroundColor = value;
+				return dummy.style.backgroundColor === value;
+			},
+		},
 	} as {[propName: string]: PropOptions},
 	data() {
 		return {
@@ -83,6 +95,7 @@ export default Vue.extend({
 		cssProps(): any {
 			return {
 				'--border': this.grid === true ? '1px solid black' : this.grid,
+				'--checker-color': this.checkers === true ? 'rgba(0, 0, 0, 0.15)' : this.checkers,
 			};
 		},
 	},
@@ -128,12 +141,12 @@ export default Vue.extend({
 			}
 			return this.data[row][col] || '';
 		},
-	},
+		},
 	mounted() {
 		if(Array.isArray(this.value)) {
 			this.data = this.value;
-		}
-	},
+						}
+		},
 	components: {
 		Pixel,
 	},
@@ -164,6 +177,9 @@ export default Vue.extend({
 			&:last-child {
 				border-right: none;
 			}
+		}
+		&.checkers {
+			background-color: var(--checker-color);
 		}
 	}
 	&:last-child .pixel {

@@ -112,7 +112,8 @@ export default Vue.extend({
 #### Release v0.1
 - Touch-friendliness
 - ~~Clear board function~~ ✔
-- Checkerboard style
+- ~~Checkerboard style~~ ✔
+- Highlight hovered pixel
 #### Release v1.0
 - Other formats for 'value' for various levels of sparseness:
   - Array of objects (`{row: number, col: number, color: string}`)
