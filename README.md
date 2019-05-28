@@ -50,8 +50,10 @@ Available props:
 |cols*	|`Number`	 |				|Specifies the number of columns in the board|
 |color	|`String`	 |`"#000000"`	|Any valid CSS color propertty value. The color to use for newly colored pixels|
 |clear	|`Boolean`	 |_unspecified_	|Specifies whether new clicks will color a pixel or remove the color|
-|grid	|`Boolean|String`|`true`	|If boolean, controls the visibility of grid lines. If string controls the shape of grid line (has to be a valid value for the CSS `border` property)|
+|grid	|`Boolean\|String`|`true`	|If boolean, controls the visibility of grid lines. If string controls the shape of grid line (has to be a valid value for the CSS `border` property)|
 |readonly|`Boolean`	 |_unspecified_	|Makes the board uneditable|
+|checkers|`Boolean\|String`|`false`|Gives the board a checker style. If string, has to be a valid value for the CSS `background-color` property|
+
 \* Marks requires props
 
 Emitted events:
