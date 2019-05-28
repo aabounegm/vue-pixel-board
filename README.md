@@ -43,16 +43,16 @@ export default Vue.extend({
 
 Available props:
 
-|Prop|Type|Default value|Notes|
-|---|---|---|---|
-|value|String[][]|||
-|rows|Number| |Specifies the number of rows in the board|
-|cols|Number| |Specifies the number of columns in the board|
-|color|String|#000000|Any valid CSS color propertty value. The color to use for newly colored pixels|
-|clear|Boolean| |Specifies whether new clicks will color a pixel or remove the color|
-|grid|Boolean\|String|true|If boolean, controls the visibility of grid lines. If string controls the shape of grid line (has to be a valid value for the CSS `border` property)|
-| | | | |
-| | | | |
+|Prop	|Type		 |Default value |Notes|
+|-------|------------|--------------|---|
+|value	|`String[][]`|`[]`			|The color in each pixel|
+|rows*	|`Number`	 | 				|Specifies the number of rows in the board|
+|cols*	|`Number`	 |				|Specifies the number of columns in the board|
+|color	|`String`	 |`"#000000"`	|Any valid CSS color propertty value. The color to use for newly colored pixels|
+|clear	|`Boolean`	 |_unspecified_	|Specifies whether new clicks will color a pixel or remove the color|
+|grid	|`Boolean|String`|`true`	|If boolean, controls the visibility of grid lines. If string controls the shape of grid line (has to be a valid value for the CSS `border` property)|
+|readonly|`Boolean`	 |_unspecified_	|Makes the board uneditable|
+\* Marks requires props
 
 Emitted events:
 - `input`: Fired when the data is updated. Sends the entire 2D array of colors. Used for the `v-model` directive.
