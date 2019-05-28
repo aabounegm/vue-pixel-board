@@ -118,6 +118,10 @@ export default Vue.extend({
 				this.$emit('update:pixel', info);
 			}
 		},
+		clearBoard() {
+			this.data = [];
+			this.$emit('input', []);
+		},
 		getColor(row: number, col: number) {
 			if(!Array.isArray(this.data[row])) {
 				return '';

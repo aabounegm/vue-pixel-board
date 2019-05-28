@@ -111,7 +111,7 @@ export default Vue.extend({
 ### Future improvements:
 #### Release v0.1
 - Touch-friendliness
-- Clear board function
+- ~~Clear board function~~ ✔
 - Checkerboard style
 #### Release v1.0
 - Other formats for 'value' for various levels of sparseness:

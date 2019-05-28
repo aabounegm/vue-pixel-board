@@ -7,6 +7,7 @@
 			:color="color"
 			:clear="deleting"
 			:readonly="readonly"
+			ref="board"
 		>
 			<template v-slot="{row, col, color}">
 				{{`(${row}, ${col}) [${color}]`}}
@@ -17,7 +18,7 @@
 		{{ deleting ? '🗑️' : '✏️' }}&nbsp;&nbsp;
 		<input type="checkbox" v-model="readonly"/>
 		{{ readonly ? '🚫' : '⭕' }}&nbsp;&nbsp;
-		
+		<button @click="clear">Clear</button>
 	</div>
 </template>
 
@@ -34,6 +35,9 @@ export default Vue.extend({
 		};
 	},
 	methods: {
+		clear() {
+			(this.$refs.board as any).clearBoard();
+		},
 	},
 	components: {
 		Board,
