@@ -6,14 +6,18 @@
 			v-model="arr"
 			:color="color"
 			:clear="deleting"
+			:readonly="readonly"
 		>
 			<template v-slot="{row, col, color}">
 				{{`(${row}, ${col}) [${color}]`}}
 			</template>
 		</board>
-		<input type="color" v-model="color"/>
+		<input type="color" v-model="color"/>&nbsp;
 		<input type="checkbox" v-model="deleting"/>
-		{{ deleting ? '🗑️' : '✏️' }}
+		{{ deleting ? '🗑️' : '✏️' }}&nbsp;&nbsp;
+		<input type="checkbox" v-model="readonly"/>
+		{{ readonly ? '🚫' : '⭕' }}&nbsp;&nbsp;
+		
 	</div>
 </template>
 
@@ -26,6 +30,7 @@ export default Vue.extend({
 			arr: [],
 			color: '#000000',
 			deleting: false,
+			readonly: false,
 		};
 	},
 	methods: {

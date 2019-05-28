@@ -71,6 +71,7 @@ export default Vue.extend({
 			default: '#000000',
 		},
 		clear: Boolean,
+		readonly: Boolean,
 	} as {[propName: string]: PropOptions},
 	data() {
 		return {
@@ -99,6 +100,9 @@ export default Vue.extend({
 			this.clicked(e, {row: i, col: j, color: this.getColor(i, j)});
 		},
 		clicked(e: MouseEvent, info: {row: number, col: number, color: string}) {
+			if(this.readonly) {
+				return;
+			}
 			if(!Array.isArray(this.data)) {
 				this.data = [];
 			}
