@@ -108,10 +108,19 @@ export default Vue.extend({
 ## Contributing
 ...
 
-Future improvements:
+### Future improvements:
+#### Release v0.1
 - Touch-friendliness
-- Exporting as image
-- Custom data object instead of color string
 - Clear board function
+- Checkerboard style
+#### Release v1.0
+- Other formats for 'value' for various levels of sparseness:
+  - Array of objects (`{row: number, col: number, color: string}`)
+  - Nested objects (`{[row: number]: {[col: number]: string}}`)
+- Custom data object instead of color string (might be useful for slots)
+#### Release v2.0
+- Rewrite using Canvas API:
+  - Load from image
+  - Export as image
 
 ## License
