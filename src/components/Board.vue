@@ -36,20 +36,20 @@ export default Vue.extend({
 	props: {
 		cols: {
 			type: Number,
-			default: 20,
+			required: true,
 			validator(val: number) {
 				return val > 0;
 			},
 		},
 		rows: {
-			type: [Number, String],
-			default: 10,
+			type: Number,
+			required: true,
 			validator(val: number) {
 				return val > 0;
 			},
 		},
 		value: {
-			type: Array as () => any[][],
+			type: Array as () => string[][],
 			default: () => [[]],
 		},
 		grid: {
