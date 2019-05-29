@@ -3,7 +3,9 @@
 		class="board"
 		draggable="true"
 		@dragstart.prevent="dragStart"
+		@touchstart.prevent="dragStart"
 		@mouseup.prevent="dragEnd"
+		@touchend.prevent="dragEnd"
 		:style="cssProps"
 	>
 		<div
@@ -18,9 +20,12 @@
 				:class="{grid, checkers: checkers && i%2 === j%2, highlightOnHover}"
 				:row="i"
 				:col="j"
+				:data-row="i"
+				:data-col="j"
 				:color="getColor(i, j)"
 				@click="clicked"
 				@mouseenter.native="mouseEnterPixel($event, i, j)"
+				@touchmove.native="mouseEnterPixel($event, i, j)"
 			>
 				<slot v-bind="{row: i, col: j, color: getColor(i,j)}">
 				</slot>
@@ -93,6 +98,7 @@ export default Vue.extend({
 		return {
 			data: [[]] as string[][],
 			dragging: false,
+			_lasttouch: null as Element|null,
 		};
 	},
 	computed: {
@@ -104,19 +110,33 @@ export default Vue.extend({
 		},
 	},
 	methods: {
-		dragStart(e: MouseEvent) {
+		dragStart(e: MouseEvent|TouchEvent) {
 			this.dragging = true;
+			if(e.type === 'touchstart') {
+				this.mouseEnterPixel(e, -1, -1);
+			}
 		},
-		dragEnd(e: MouseEvent) {
+		dragEnd(e: MouseEvent|TouchEvent) {
 			this.dragging = false;
+			this._lasttouch = null;
 		},
-		mouseEnterPixel(e: MouseEvent, i: number, j: number) {
+		mouseEnterPixel(e: MouseEvent|TouchEvent, i: number, j: number) {
 			if(!this.dragging) {
 				return;
 			}
+			if(e.type === 'touchmove' || e.type === 'touchstart') {
+				const location = (e as TouchEvent).changedTouches[0];
+				const element = document.elementFromPoint(location.clientX, location.clientY);
+				if(this._lasttouch === element || element == null) {
+					return;
+				}
+				i = parseInt(element.getAttribute('data-row')!, 10);
+				j = parseInt(element.getAttribute('data-col')!, 10);
+				this._lasttouch = element;
+			}
 			this.clicked(e, {row: i, col: j, color: this.getColor(i, j)});
 		},
-		clicked(e: MouseEvent, info: {row: number, col: number, color: string}) {
+		clicked(e: MouseEvent|TouchEvent, info: {row: number, col: number, color: string}) {
 			if(this.readonly) {
 				return;
 			}

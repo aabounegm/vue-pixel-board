@@ -113,7 +113,7 @@ export default Vue.extend({
 
 ### Future improvements:
 #### Release v0.1
-- Touch-friendliness
+- ~~Touch-friendliness~~ ✔
 - ~~Clear board function~~ ✔
 - ~~Checkerboard style~~ ✔
 - ~~Highlight hovered pixel~~ ✔
