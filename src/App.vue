@@ -11,7 +11,7 @@
 			:checkers="checkers"
 			ref="board"
 		>
-			<template v-slot="{row, col, color}">
+			<template v-slot="{row, col, color}" v-if="slot">
 				{{`(${row}, ${col}) [${color}]`}}
 			</template>
 		</board>
@@ -24,6 +24,8 @@
 		{{ grid ? '╬' : '┼' }}&nbsp;&nbsp;
 		<input type="checkbox" v-model="checkers"/>
 		{{ checkers ? '🏁' : '⬜' }}&nbsp;&nbsp;
+		<input type="checkbox" v-model="slot"/>
+		Slot&nbsp;&nbsp;
 		<button @click="clear">Clear</button>
 	</div>
 </template>
@@ -40,6 +42,7 @@ export default Vue.extend({
 			readonly: false,
 			grid: true,
 			checkers: false,
+			slot: false,
 		};
 	},
 	methods: {
