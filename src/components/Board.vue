@@ -142,11 +142,6 @@ export default Vue.extend({
 			return this.data[row][col] || '';
 		},
 		},
-	mounted() {
-		if(Array.isArray(this.value)) {
-			this.data = this.value;
-						}
-		},
 	components: {
 		Pixel,
 	},
