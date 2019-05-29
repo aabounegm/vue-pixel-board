@@ -53,6 +53,7 @@ Available props:
 |grid	|`Boolean\|String`|`true`	|If boolean, controls the visibility of grid lines. If string controls the shape of grid line (has to be a valid value for the CSS `border` property)|
 |readonly|`Boolean`	 |_unspecified_	|Makes the board uneditable|
 |checkers|`Boolean\|String`|`false`|Gives the board a checker style. If string, has to be a valid value for the CSS `background-color` property|
+|highlightOnHover|`Boolean`|`true`|Highlight the pixel the mouse is currently hovering on|
 
 \* Marks requires props
 
@@ -115,7 +116,7 @@ export default Vue.extend({
 - Touch-friendliness
 - ~~Clear board function~~ ✔
 - ~~Checkerboard style~~ ✔
-- Highlight hovered pixel
+- ~~Highlight hovered pixel~~ ✔
 #### Release v1.0
 - Other formats for 'value' for various levels of sparseness:
   - Array of objects (`{row: number, col: number, color: string}`)

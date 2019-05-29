@@ -15,7 +15,7 @@
 				v-for="(_, j) in cols"
 				:key="`${i},${j}`"
 				class="pixel"
-				:class="{grid, checkers: checkers && i%2 === j%2}"
+				:class="{grid, checkers: checkers && i%2 === j%2, highlightOnHover}"
 				:row="i"
 				:col="j"
 				:color="getColor(i, j)"
@@ -84,6 +84,10 @@ export default Vue.extend({
 				return dummy.style.backgroundColor === value;
 			},
 		},
+		highlightOnHover: {
+			type: Boolean,
+			default: true,
+		},
 	} as {[propName: string]: PropOptions},
 	data() {
 		return {
@@ -95,7 +99,7 @@ export default Vue.extend({
 		cssProps(): any {
 			return {
 				'--border': this.grid === true ? '1px solid black' : this.grid,
-				'--checker-color': this.checkers === true ? 'rgba(0, 0, 0, 0.15)' : this.checkers,
+				'--checker-color': this.checkers === true ? 'rgba(0, 0, 0, 0.1)' : this.checkers,
 			};
 		},
 	},
@@ -141,7 +145,7 @@ export default Vue.extend({
 			}
 			return this.data[row][col] || '';
 		},
-		},
+	},
 	components: {
 		Pixel,
 	},
@@ -175,6 +179,9 @@ export default Vue.extend({
 		}
 		&.checkers {
 			background-color: var(--checker-color);
+		}
+		&.highlightOnHover:hover:not(:active) {
+			background-color: rgba(1, 1, 1, 0.2);
 		}
 	}
 	&:last-child .pixel {
