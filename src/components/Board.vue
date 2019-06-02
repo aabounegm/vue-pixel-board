@@ -165,6 +165,15 @@ export default Vue.extend({
 			}
 			return this.data[row][col] || '';
 		},
+		setColor(row: number, col: number, color: string) {
+			if(!Array.isArray(this.data)) {
+				this.data = [];
+			}
+			if(!Array.isArray(this.data[row])) {
+				this.$set(this.data, row, []);
+			}
+			this.$set(this.data[row], col, color);
+		},
 		_copy() {
 			const ret = new Array(this.data.length);
 			for(let i = 0; i < this.data.length; i++) {
@@ -178,6 +187,26 @@ export default Vue.extend({
 				}
 			}
 			return ret;
+		},
+	},
+	watch: {
+		value: {
+			handler(newArr: string[][]) {
+				if(!Array.isArray(newArr)) {
+					return;
+				}
+				for(let i = 0; i < newArr.length; i++) {
+					if(!Array.isArray(newArr[i])) {
+						continue;
+					}
+					for(let j = 0; j < newArr[i].length; j++) {
+						if(newArr[i][j]) {
+							this.setColor(i, j, newArr[i][j]);
+						}
+					}
+				}
+			},
+			immediate: true,
 		},
 	},
 	components: {
