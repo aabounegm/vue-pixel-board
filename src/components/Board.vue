@@ -151,7 +151,7 @@ export default Vue.extend({
 			const oldColor = this.getColor(info.row, info.col);
 			if(info.color !== oldColor) {
 				this.$set(this.data[info.row], info.col, info.color);
-				this.$emit('input', this.data);
+				this.$emit('input', this._copy());
 				this.$emit('update:pixel', info);
 			}
 		},
@@ -164,6 +164,20 @@ export default Vue.extend({
 				return '';
 			}
 			return this.data[row][col] || '';
+		},
+		_copy() {
+			const ret = new Array(this.data.length);
+			for(let i = 0; i < this.data.length; i++) {
+				if(Array.isArray(this.data[i])) {
+					for(let j = 0; j < this.data[i].length; j++) {
+						if(!Array.isArray(ret[i])) {
+							ret[i] = [];
+						}
+						ret[i][j] = this.data[i][j];
+					}
+				}
+			}
+			return ret;
 		},
 	},
 	components: {
