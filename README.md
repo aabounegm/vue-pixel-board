@@ -24,12 +24,10 @@ To register globally:
 import Vue from 'vue';
 import PixelBoard from 'vue-pixel-board';
 
-Vue.use(PixelBoard);
-// or
 Vue.component('pixel-board', PixelBoard);
 ```
 
-To use in your component, just add it to the `components` option:
+Or to use in your component without global registration, just add it to the `components` option:
 ```javascript
 export default Vue.extend({
 	name: 'your-component',
@@ -102,6 +100,8 @@ export default Vue.extend({
 }
 </style>
 ```
+
+_For a more detailed example, check [this](./src/App.vue)_
 
 ### Notes:
 - The board will take up the entire space of its container

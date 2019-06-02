@@ -5,9 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-bundle": "vue-cli-service build --target lib --name vue-pixel-board ./src/components/Board.vue",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
+  "main": "./dist/vue-pixel-board.common.js",
+  "unpkg": "./dist/vue-pixel-board.umd.min.js",
   "dependencies": {
     "vue": "^2.6.10"
   },
@@ -23,5 +26,10 @@
     "sass-loader": "^7.1.0",
     "typescript": "^3.4.3",
     "vue-template-compiler": "^2.5.21"
-  }
+  },
+  "files": [
+    "dist/*",
+    "*.json",
+    "*.ts"
+  ]
 }
