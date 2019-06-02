@@ -1,7 +1,13 @@
 {
   "name": "vue-pixel-board",
   "version": "0.1.0",
-  "private": true,
+  "description": "A component for VueJs that provides a pixels drawing board",
+  "author": {
+    "name": "Abdelrahman Abounegm",
+    "email": "aabounegm@gmail.com"
+  },
+  "repository": "github:aabounegm/vue-pixel-board",
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
