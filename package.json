@@ -17,12 +17,16 @@
   },
   "main": "./dist/vue-pixel-board.common.js",
   "unpkg": "./dist/vue-pixel-board.umd.min.js",
-  "dependencies": {
+  "browser": {
+    "./sfc": "./src/components/Board.vue"
+  },
+  "peerDependencies": {
     "vue": "^2.6.11"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
+    "@vue/cli-plugin-eslint": "^4.4.6",
     "@vue/cli-plugin-typescript": "^4.4.6",
     "@vue/cli-plugin-unit-mocha": "^4.4.6",
     "@vue/cli-service": "^4.4.6",
@@ -30,7 +34,7 @@
     "chai": "^4.1.2",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
-    "typescript": "^3.9.5",
+    "typescript": "^3.9.7",
     "vue-template-compiler": "^2.6.11"
   },
   "files": [
