@@ -45,14 +45,14 @@ Available props:
 
 | Prop  | Type       | Default value | Description |
 |-------|------------|---------------|-------------|
-<!-- | value | `String[][]` | `[]` | The color in each pixel | -->
 | rows* | `Number` | | Specifies the number of rows in the board |
 | cols* | `Number` | | Specifies the number of columns in the board |
 | color | `String` | `"#000000"` | Any valid CSS color propertty value. The color to use for newly colored pixels |
 | clear | `Boolean`| `false` | Specifies whether new clicks will color a pixel or remove the color |
-<!-- | grid | `Boolean\|String` | `true` | If boolean, controls the visibility of grid lines. If string controls the shape of grid line (has to be a valid value for the CSS `border` property) | -->
 | readonly | `Boolean` | `false` | Makes the board uneditable |
+<!-- | value | `String[][]` | `[]` | The color in each pixel | -->
 <!-- | checkers | `Boolean\|String` | `false` | Gives the board a checker style. If string, has to be a valid value for the CSS `background-color` property | -->
+<!-- | grid | `Boolean\|String` | `true` | If boolean, controls the visibility of grid lines. If string controls the shape of grid line (has to be a valid value for the CSS `border` property) | -->
 <!-- | highlightOnHover | `Boolean` | `true` | Highlight the pixel the mouse is currently hovering on | -->
 
 _\* Marks required props_
