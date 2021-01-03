@@ -30,10 +30,10 @@ Vue.component('pixel-board', PixelBoard);
 Or to use in your component without global registration, just add it to the `components` option:
 ```javascript
 export default Vue.extend({
-	name: 'your-component',
-	components: {
-		PixelBoard,    // Using ES6 shorthand notation
-	},
+    name: 'your-component',
+    components: {
+        PixelBoard,    // Using ES6 shorthand notation
+    },
 });
 ```
 
@@ -61,16 +61,16 @@ Emitted events:
 Example usage:
 ```vue
 <template>
-	<div class="wrapper">
-		<pixel-board
-			:rows="rowCount"
-			:cols="colCount"
-			:color="color"
-			:clear="deletingState"
-		/>
-	</div>
-	<input type="color" v-model="color"/>
-	<input type="checkbox" v-model="deletingState"/>🗑️
+    <div class="wrapper">
+        <pixel-board
+            :rows="rowCount"
+            :cols="colCount"
+            :color="color"
+            :clear="deletingState"
+        />
+    </div>
+    <input type="color" v-model="color"/>
+    <input type="checkbox" v-model="deletingState"/>🗑️
 </template>
 
 <script lang="ts">
@@ -78,22 +78,22 @@ import Vue from 'vue';
 import PixelBoard from 'vue-pixel-board';
 
 export default Vue.extend({
-	data() {
-		rowCount: 80,
-		colCount: 80,
-		color: '#000000',
-		deletingState: false,
-	},
-	components: {
-		PixelBoard,
-	},
+    data() {
+        rowCount: 80,
+        colCount: 80,
+        color: '#000000',
+        deletingState: false,
+    },
+    components: {
+        PixelBoard,
+    },
 });
 </script>
 
 <style scoped>
 .wrapper {
-	height: 800px;
-	width: 800px;
+    height: 800px;
+    width: 800px;
 }
 </style>
 ```
