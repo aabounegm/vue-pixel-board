@@ -1,0 +1,10 @@
+{
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "octref.vetur",
+	"eslint.validate": [
+		"javascript",
+		"typescript",
+		"vue"
+	],
+	"vetur.validation.template": false
+}
