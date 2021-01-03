@@ -7,12 +7,10 @@ Pixel drawing board SFC for Vue
 
 ## Table of Contents
 
-- [Installing](#installing)
+- [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
-## Installing
+## Installation
 
 ```sh
 npm install vue-pixel-board
@@ -45,33 +43,31 @@ Available props:
 
 | Prop  | Type       | Default value | Description |
 |-------|------------|---------------|-------------|
-| rows* | `Number` | | Specifies the number of rows in the board |
-| cols* | `Number` | | Specifies the number of columns in the board |
-| color | `String` | `"#000000"` | Any valid CSS color propertty value. The color to use for newly colored pixels |
-| clear | `Boolean`| `false` | Specifies whether new clicks will color a pixel or remove the color |
-| readonly | `Boolean` | `false` | Makes the board uneditable |
-<!-- | value | `String[][]` | `[]` | The color in each pixel | -->
-<!-- | checkers | `Boolean\|String` | `false` | Gives the board a checker style. If string, has to be a valid value for the CSS `background-color` property | -->
-<!-- | grid | `Boolean\|String` | `true` | If boolean, controls the visibility of grid lines. If string controls the shape of grid line (has to be a valid value for the CSS `border` property) | -->
-<!-- | highlightOnHover | `Boolean` | `true` | Highlight the pixel the mouse is currently hovering on | -->
+| rows* | `number` | | Specifies the number of rows in the board |
+| cols* | `number` | | Specifies the number of columns in the board |
+| color | `string` | `"#000000"` | Any valid CSS color propertty value. The color to use for newly colored pixels |
+| clear | `boolean`| `false` | Specifies whether new clicks will color a pixel or remove the color |
+| readonly | `boolean` | `false` | Makes the board uneditable |
+<!-- | value | `string[][]` | `[]` | The color in each pixel | -->
+<!-- | checkers | `boolean\|string` | `false` | Gives the board a checker style. If string, has to be a valid value for the CSS `background-color` property | -->
+<!-- | grid | `boolean\|string` | `true` | If boolean, controls the visibility of grid lines. If string controls the shape of grid line (has to be a valid value for the CSS `border` property) | -->
+<!-- | highlightOnHover | `boolean` | `true` | Highlight the pixel the mouse is currently hovering on | -->
 
 _\* Marks required props_
 
 Emitted events:
-- `input`: Fired when the data is updated. Sends the entire 2D array of colors. Used for the `v-model` directive.
-- `update:pixel`: Fired when a pixel's value is updated, with information about only this pixel. Useful to update a database with sparse information.
+- `input`: Fired when any pixel's value gets updated. Contains the information `{ x: number, y: number, color: string }`.
 
 Example usage:
-```html
+```vue
 <template>
 	<div class="wrapper">
-		<board
-			v-model="grid"
+		<pixel-board
 			:rows="rowCount"
 			:cols="colCount"
 			:color="color"
 			:clear="deletingState"
-		></board>
+		/>
 	</div>
 	<input type="color" v-model="color"/>
 	<input type="checkbox" v-model="deletingState"/>🗑️
@@ -83,14 +79,13 @@ import PixelBoard from 'vue-pixel-board';
 
 export default Vue.extend({
 	data() {
-		grid: [[]],
 		rowCount: 80,
 		colCount: 80,
 		color: '#000000',
 		deletingState: false,
 	},
 	components: {
-		PixelBoard
+		PixelBoard,
 	},
 });
 </script>
@@ -109,22 +104,6 @@ _For a more detailed example, check [this](./src/App.vue)_
 - The board will take up the entire space of its container
 - The aspect ratio of the pixels is not preserved. Make sure to size the container with respect to the number of rows/cols to make them squares (or whatever rectangle size)
 
-
-## Future improvements:
-### Release v0.1
-- [ ] Touch-friendliness
-- [ ] Clear board function
-- [ ] Checkerboard style
-- [ ] Highlight hovered pixel
-### Release v1.0
-- Other formats for 'value' for various levels of sparseness:
-  - Array of objects (`{row: number, col: number, color: string}`)
-  - Nested objects (`{[row: number]: {[col: number]: string}}`)
-- Custom data object instead of color string (might be useful for slots)
-### Release v2.0
-- Rewrite using Canvas API:
-  - Load from image
-  - Export as image
 
 ## License
 
