@@ -1,39 +1,50 @@
 <template>
 	<div id="app">
-		<board
-			:rows="10"
-			:cols="20"
-			v-model="arr"
-			:color="color"
-			:clear="deleting"
-			:readonly="readonly"
-			:grid="grid"
-			:checkers="checkers"
-			ref="board"
+		<div class="board-wrapper">
+			<board
+				ref="board"
+				:rows="30"
+				:cols="60"
+				:pixel-size="size"
+				:color="color"
+				:clearing="deleting"
+				:readonly="readonly"
+				:grid="grid"
+				:checkers="checkers"
+			/>
+		</div>
+		<input
+			v-model="color"
+			type="color"
+		>&nbsp;
+		<input
+			v-model="deleting"
+			type="checkbox"
 		>
-			<template v-slot="{row, col, color}" v-if="slot">
-				{{`(${row}, ${col}) [${color}]`}}
-			</template>
-		</board>
-		<input type="color" v-model="color"/>&nbsp;
-		<input type="checkbox" v-model="deleting"/>
 		{{ deleting ? '🗑️' : '✏️' }}&nbsp;&nbsp;
-		<input type="checkbox" v-model="readonly"/>
+		<input
+			v-model="readonly"
+			type="checkbox"
+		>
 		{{ readonly ? '🚫' : '⭕' }}&nbsp;&nbsp;
-		<input type="checkbox" v-model="grid"/>
+		<!-- <input type="checkbox" v-model="grid"/>
 		{{ grid ? '╬' : '┼' }}&nbsp;&nbsp;
 		<input type="checkbox" v-model="checkers"/>
-		{{ checkers ? '🏁' : '⬜' }}&nbsp;&nbsp;
-		<input type="checkbox" v-model="slot"/>
-		Slot&nbsp;&nbsp;
-		<button @click="clear">Clear</button>
+		{{ checkers ? '🏁' : '⬜' }}&nbsp;&nbsp; -->
+		<button @click="clear">
+			Clear
+		</button>
 	</div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import Board from './components/Board.vue';
+
 export default Vue.extend({
+	components: {
+		Board,
+	},
 	data() {
 		return {
 			arr: [],
@@ -43,6 +54,7 @@ export default Vue.extend({
 			grid: true,
 			checkers: false,
 			slot: false,
+			size: 15,
 		};
 	},
 	methods: {
@@ -50,14 +62,17 @@ export default Vue.extend({
 			(this.$refs.board as any).clearBoard();
 		},
 	},
-	components: {
-		Board,
-	},
 });
 </script>
 
 <style lang="scss">
 #app {
-	height: 400px;
+	height: 500px;
+}
+.board-wrapper {
+	border: 1px solid;
+	display: block;
+	height: 450px;
+	width: 900px;
 }
 </style>

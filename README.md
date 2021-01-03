@@ -2,16 +2,18 @@
 
 Pixel drawing board SFC for Vue
 
+> :warning: Warning!
+> This library is under heavy reconstruction. Please visit later. 
+
 ## Table of Contents
 
-- [Install](#install)
+- [Installing](#installing)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
-## Install
+## Installing
 
-Using [npm](https://npmjs.com/):
 ```sh
 npm install vue-pixel-board
 ```
@@ -43,15 +45,15 @@ Available props:
 
 | Prop  | Type       | Default value | Description |
 |-------|------------|---------------|-------------|
-| value | `String[][]` | `[]` | The color in each pixel |
+<!-- | value | `String[][]` | `[]` | The color in each pixel | -->
 | rows* | `Number` | | Specifies the number of rows in the board |
 | cols* | `Number` | | Specifies the number of columns in the board |
 | color | `String` | `"#000000"` | Any valid CSS color propertty value. The color to use for newly colored pixels |
 | clear | `Boolean`| `false` | Specifies whether new clicks will color a pixel or remove the color |
-| grid | `Boolean\|String` | `true` | If boolean, controls the visibility of grid lines. If string controls the shape of grid line (has to be a valid value for the CSS `border` property) |
+<!-- | grid | `Boolean\|String` | `true` | If boolean, controls the visibility of grid lines. If string controls the shape of grid line (has to be a valid value for the CSS `border` property) | -->
 | readonly | `Boolean` | `false` | Makes the board uneditable |
-| checkers | `Boolean\|String` | `false` | Gives the board a checker style. If string, has to be a valid value for the CSS `background-color` property |
-| highlightOnHover | `Boolean` | `true` | Highlight the pixel the mouse is currently hovering on |
+<!-- | checkers | `Boolean\|String` | `false` | Gives the board a checker style. If string, has to be a valid value for the CSS `background-color` property | -->
+<!-- | highlightOnHover | `Boolean` | `true` | Highlight the pixel the mouse is currently hovering on | -->
 
 _\* Marks required props_
 
@@ -108,9 +110,6 @@ _For a more detailed example, check [this](./src/App.vue)_
 - The aspect ratio of the pixels is not preserved. Make sure to size the container with respect to the number of rows/cols to make them squares (or whatever rectangle size)
 
 
-## Contributing
-...
-
 ## Future improvements:
 ### Release v0.1
 - [ ] Touch-friendliness
@@ -128,3 +127,5 @@ _For a more detailed example, check [this](./src/App.vue)_
   - Export as image
 
 ## License
+
+[MIT License](./LICENSE)
