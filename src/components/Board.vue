@@ -4,8 +4,8 @@
 		draggable
 		:width="cols * pixelSize"
 		:height="rows * pixelSize"
-		@dragstart.prevent="dragStart"
-		@mouseup.prevent="dragEnd"
+		@dragstart.prevent="dragging = true"
+		@mouseup.prevent="dragging = false"
 		@mousemove="mouseEnterPixel"
 		@mouseleave="dragging = false"
 		@click="clicked"
@@ -37,12 +37,8 @@ export default Vue.extend({
 		// 	validator(value: boolean|string): boolean {
 		// 		if (typeof value === 'boolean') {
 		// 			return true;
-		// 		} else if (typeof value === 'string') {
-		// 			const dummy = document.createElement('div');
-		// 			dummy.style.border = value;
-		// 			return dummy.style.border === value;
 		// 		}
-		// 		return false;
+		// 		return /#[\da-f]{6}/.test(value);
 		// 	},
 		// },
 		color: {
@@ -67,9 +63,7 @@ export default Vue.extend({
 		// 		if(typeof value === 'boolean') {
 		// 			return true;
 		// 		}
-		// 		const dummy = document.createElement('div');
-		// 		dummy.style.backgroundColor = value;
-		// 		return dummy.style.backgroundColor === value;
+		// 		return /#[\da-f]{6}/.test(value);
 		// 	},
 		// },
 		// highlightOnHover: {
@@ -99,30 +93,10 @@ export default Vue.extend({
 		this.imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 	},
 	methods: {
-		dragStart(e: MouseEvent) {
-			this.dragging = true;
-			if (e.type === 'touchstart') {
-				this.mouseEnterPixel(e);
-			}
-		},
-		dragEnd(e: MouseEvent) {
-			this.dragging = false;
-			this.lastTouched = null;
-		},
 		mouseEnterPixel(e: MouseEvent) {
 			if (!this.dragging) {
 				return;
 			}
-			/* if(e.type === 'touchmove' || e.type === 'touchstart') {
-				const location = (e as TouchEvent).changedTouches[0];
-				const element = document.elementFromPoint(location.clientX, location.clientY);
-				if(this.lastTouched === element || element == null) {
-					return;
-				}
-				i = parseInt(element.getAttribute('data-row')!, 10);
-				j = parseInt(element.getAttribute('data-col')!, 10);
-				this.lastTouched = element;
-			} */
 			this.clicked(e);
 		},
 		clicked(e: MouseEvent) {
@@ -173,25 +147,5 @@ export default Vue.extend({
 		},
 		*/
 	},
-	/* watch: {
-		value: {
-			handler(newArr: string[][]) {
-				if(!Array.isArray(newArr)) {
-					return;
-				}
-				for(let i = 0; i < newArr.length; i++) {
-					if(!Array.isArray(newArr[i])) {
-						continue;
-					}
-					for(let j = 0; j < newArr[i].length; j++) {
-						if(newArr[i][j]) {
-							this.setColor(i, j, newArr[i][j]);
-						}
-					}
-				}
-			},
-			immediate: true,
-		},
-	}, */
 });
 </script>
