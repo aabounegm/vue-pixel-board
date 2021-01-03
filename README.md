@@ -41,19 +41,19 @@ export default Vue.extend({
 
 Available props:
 
-|Prop	|Type		 |Default value |Notes|
-|-------|------------|--------------|---|
-|value	|`String[][]`|`[]`			|The color in each pixel|
-|rows*	|`Number`	 | 				|Specifies the number of rows in the board|
-|cols*	|`Number`	 |				|Specifies the number of columns in the board|
-|color	|`String`	 |`"#000000"`	|Any valid CSS color propertty value. The color to use for newly colored pixels|
-|clear	|`Boolean`	 |_unspecified_	|Specifies whether new clicks will color a pixel or remove the color|
-|grid	|`Boolean\|String`|`true`	|If boolean, controls the visibility of grid lines. If string controls the shape of grid line (has to be a valid value for the CSS `border` property)|
-|readonly|`Boolean`	 |_unspecified_	|Makes the board uneditable|
-|checkers|`Boolean\|String`|`false`|Gives the board a checker style. If string, has to be a valid value for the CSS `background-color` property|
-|highlightOnHover|`Boolean`|`true`|Highlight the pixel the mouse is currently hovering on|
+| Prop  | Type       | Default value | Description |
+|-------|------------|---------------|-------------|
+| value | `String[][]` | `[]` | The color in each pixel |
+| rows* | `Number` | | Specifies the number of rows in the board |
+| cols* | `Number` | | Specifies the number of columns in the board |
+| color | `String` | `"#000000"` | Any valid CSS color propertty value. The color to use for newly colored pixels |
+| clear | `Boolean`| `false` | Specifies whether new clicks will color a pixel or remove the color |
+| grid | `Boolean\|String` | `true` | If boolean, controls the visibility of grid lines. If string controls the shape of grid line (has to be a valid value for the CSS `border` property) |
+| readonly | `Boolean` | `false` | Makes the board uneditable |
+| checkers | `Boolean\|String` | `false` | Gives the board a checker style. If string, has to be a valid value for the CSS `background-color` property |
+| highlightOnHover | `Boolean` | `true` | Highlight the pixel the mouse is currently hovering on |
 
-\* Marks requires props
+_\* Marks required props_
 
 Emitted events:
 - `input`: Fired when the data is updated. Sends the entire 2D array of colors. Used for the `v-model` directive.
@@ -111,18 +111,18 @@ _For a more detailed example, check [this](./src/App.vue)_
 ## Contributing
 ...
 
-### Future improvements:
-#### Release v0.1
-- ~~Touch-friendliness~~ ✔
-- ~~Clear board function~~ ✔
-- ~~Checkerboard style~~ ✔
-- ~~Highlight hovered pixel~~ ✔
-#### Release v1.0
+## Future improvements:
+### Release v0.1
+- [ ] Touch-friendliness
+- [ ] Clear board function
+- [ ] Checkerboard style
+- [ ] Highlight hovered pixel
+### Release v1.0
 - Other formats for 'value' for various levels of sparseness:
   - Array of objects (`{row: number, col: number, color: string}`)
   - Nested objects (`{[row: number]: {[col: number]: string}}`)
 - Custom data object instead of color string (might be useful for slots)
-#### Release v2.0
+### Release v2.0
 - Rewrite using Canvas API:
   - Load from image
   - Export as image
