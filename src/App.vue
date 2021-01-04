@@ -34,6 +34,10 @@
 		<button @click="clear">
 			Clear
 		</button>
+
+		<button @click="save">
+			Save as Image
+		</button>
 	</div>
 </template>
 
@@ -60,6 +64,10 @@ export default Vue.extend({
 	methods: {
 		clear() {
 			(this.$refs.board as any).clearBoard();
+		},
+		
+		save() {
+			(this.$refs.board as any).saveBoard();
 		},
 	},
 });
