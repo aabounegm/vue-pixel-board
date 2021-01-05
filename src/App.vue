@@ -67,7 +67,7 @@ export default Vue.extend({
 		},
 		
 		save() {
-			(this.$refs.board as any).saveBoard();
+			(this.$refs.board as any).downloadImage();
 		},
 	},
 });

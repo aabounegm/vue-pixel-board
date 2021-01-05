@@ -127,15 +127,13 @@ export default Vue.extend({
 			const { width, height } = this.ctx.canvas;
 			this.ctx.clearRect(0, 0, width, height);
 		},
-
-		saveBoard() {
-			const url = this.ctx.canvas.toDataURL('image/png').replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-		    let downloadLink = document.createElement('a');
-    		downloadLink.setAttribute('download', 'canvas.png');
+		downloadImage(mimeType = 'image/png') {
+			const url = this.ctx.canvas.toDataURL(mimeType).replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+			const downloadLink = document.createElement('a');
+			downloadLink.setAttribute('download', 'canvas.png');
 			downloadLink.setAttribute('href', url);
 			downloadLink.click();
 		},
-
 		loadImage(img: HTMLImageElement) {
 			this.ctx.drawImage(img, 0, 0);
 		},
