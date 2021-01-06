@@ -5,6 +5,12 @@ Pixel drawing board SFC for Vue
 > :warning: Warning!
 > This library is under heavy reconstruction. Please visit later. 
 
+
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/aabounegm/vue-pixel-board/Release)](https://github.com/aabounegm/vue-pixel-board/actions?query=workflow%3ARelease%20to%20NPM)
+[![npm](https://img.shields.io/npm/v/vue-pixel-board)](https://www.npmjs.com/package/vue-pixel-board)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/vue-pixel-board)](https://bundlephobia.com/result?p=vue-pixel-board)
+[![npm bundle zipped size](https://img.shields.io/bundlephobia/minzip/vue-pixel-board)](https://bundlephobia.com/result?p=vue-pixel-board)
+
 ## Table of Contents
 
 - [Installation](#installation)
