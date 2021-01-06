@@ -65,7 +65,7 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss">
+<style>
 #app {
 	height: 500px;
 }

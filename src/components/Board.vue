@@ -80,7 +80,6 @@ export default Vue.extend({
 			ctx: null as unknown as CanvasRenderingContext2D,
 			imageData: null as unknown as ImageData,
 			dragging: false,
-			lastTouched: null as Element|null,
 		};
 	},
 	mounted() {
