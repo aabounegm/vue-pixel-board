@@ -1,0 +1,23 @@
+name: Lint & Build PR
+
+on: pull_request
+
+jobs:
+  lint:
+    name: Build and lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout PR
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v1
+      - name: Install and Build component
+        run: |
+          npm install
+          npm run build-bundle
+          npm run build
+
+      - name: Lint
+        run: npm run lint
