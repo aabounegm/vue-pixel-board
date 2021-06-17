@@ -9,6 +9,7 @@
 		@mousemove="mouseEnterPixel"
 		@mouseleave="dragging = false"
 		@click="clicked"
+		@contextmenu="clearPixel($event)"
 	/>
 </template>
 
@@ -121,6 +122,15 @@ export default Vue.extend({
 			// const rightClickXorClearing = this.clear !== (e.type === 'contextmenu');
 			// info.color = rightClickXorClearing ? '' : this.color;
 			// const oldColor = this.getColor(info.row, info.col);
+		},
+		clearPixel(e: MouseEvent) {
+			if (this.readonly) {
+				return;
+			}
+			e.preventDefault();
+			const { offsetX: x, offsetY: y } = e;
+			this.ctx.fillStyle = '';
+			this.ctx.clearRect.apply(this.ctx, [x - x % this.pixelSize, y - y % this.pixelSize, this.pixelSize, this.pixelSize]);
 		},
 		clearBoard() {
 			const { width, height } = this.ctx.canvas;
